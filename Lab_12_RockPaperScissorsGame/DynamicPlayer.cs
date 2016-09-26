@@ -6,43 +6,44 @@ using System.Threading.Tasks;
 
 namespace Lab_12_RockPaperScissorsGame
 {
-    class DynamicPlayer: Player
+    class DynamicPlayer : Player
     {
-        private Random r = new Random();
-
-        public override Roshambo generateRoshambo(Roshambo dynamicChoice)
+        Roshambo roshambo;
+        public override Roshambo generateRoshambo()
         {
-            string yes = "";
-            int randomPlayerChoice = 0;
-            Console.WriteLine("Enter Rock(1), Paper (2), Scissors(3)");
-            bool Choice = Int32.TryParse(Console.ReadLine(), out randomPlayerChoice);
-
-            do
-            {
-                if (randomPlayerChoice == 1)
-                {
-                     dynamicChoice = Roshambo.ROCK;
-                    return dynamicChoice;
-                }
-                else if (randomPlayerChoice == 2)
-                {
-                     dynamicChoice = Roshambo.PAPER;
-                    return dynamicChoice;
-                }
-                else if (randomPlayerChoice == 3)
-                {
-                     dynamicChoice = Roshambo.SCISSORS;
-                    return dynamicChoice;
-                }
-                else if (randomPlayerChoice != 1 || randomPlayerChoice != 2 || randomPlayerChoice != 3)
-                {
-                    Console.WriteLine("Please Enter a valid Number");
-                    Console.WriteLine("Would you like to play again? (y/n)");
-                    yes = Console.ReadLine();
-                }
-            } while (yes == "y");
-            return dynamicChoice;
+            return roshambo;
         }
-        
+        public Roshambo generateRoshambo(int randomPlayerChoice)
+            
+        {
+             Roshambo rps = 0;
+           // Console.WriteLine("Enter Rock(1), Paper(2), Scissors(3)");
+           // bool whenValidNumber = int.TryParse(Console.ReadLine(), out randomPlayerChoice);
+
+            if (randomPlayerChoice == 1)
+               {
+                rps = Player.Roshambo.ROCK;
+                Console.WriteLine(rps);
+                return rps;
+
+
+            }
+            if (randomPlayerChoice == 2)
+            {
+                rps = Player.Roshambo.PAPER;
+                Console.WriteLine(rps);
+                return rps;
+            }
+
+            if (randomPlayerChoice == 3)
+            {
+                rps = Player.Roshambo.SCISSORS;
+                Console.WriteLine(rps);
+                return rps;
+            }
+            return rps;
+        }
+
+
     }
 }

@@ -9,10 +9,13 @@ namespace Lab_12_RockPaperScissorsGame
    abstract class Player
     {
         string name = "";
-       public enum Roshambo { ROCK=1, PAPER, SCISSORS}
-       public abstract Roshambo generateRoshambo(Roshambo xyz);
+        public enum Roshambo { ROCK = 1, PAPER = 2, SCISSORS = 3 }
+        public abstract Roshambo generateRoshambo();
         
-
+        //public Roshambo rockPaper(Roshambo player1, Roshambo player2)
+        //{
+            
+        //}
         
     }
 }
