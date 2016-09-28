@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 namespace Lab_12_RockPaperScissorsGame
 {
     class jack:Player
-
-        {
-        private Random r = new Random();
+      {
         Roshambo rockPlayer;
-            public override Roshambo generateRoshambo()
+        private Random r = new Random();
+       public override Roshambo generateRoshambo(int num)
        {
-            rockPlayer = (Roshambo)r.Next(1, 2);
+            num = r.Next(1, 2);
+            rockPlayer = (Roshambo)num;
             Console.WriteLine(rockPlayer);
             return rockPlayer;
       }

@@ -9,55 +9,30 @@ namespace Lab_12_RockPaperScissorsGame
     class RandomPlayer : Player
 
     {
-        static Random r = new Random();
-        int randomNumber = r.Next(1, 4);
-        Roshambo roshambo;
-
-        public override Roshambo generateRoshambo()
+        
+        public override Roshambo generateRoshambo(int randomNumber)
         {
-
+             Roshambo roshambo =0;
             if (randomNumber == 1)
             {
                 roshambo = Player.Roshambo.ROCK;
-                Console.WriteLine(roshambo);
+                //Console.WriteLine("TheSharks: "+roshambo);
                 return roshambo;
             }
             else if (randomNumber == 2)
             {
                 roshambo = Player.Roshambo.PAPER;
-                Console.WriteLine(roshambo);
+               // Console.WriteLine("TheSharks: " + roshambo);
                 return roshambo;
             }
 
             else if (randomNumber == 3)
             {
                 roshambo = Player.Roshambo.SCISSORS;
-                Console.WriteLine(roshambo);
+               // Console.WriteLine("TheSharks: " + roshambo);
                 return roshambo;
             }
-            return roshambo;
+            return  roshambo;
         }
-
-            //private Random r = new Random();
-
-            //public override Roshambo generateRoshambo()
-            //{
-            //  Roshambo  roshambo =(Roshambo) r.Next(1, 4);
-            //    Console.WriteLine(roshambo);
-            //    //string random = (string)Enum.Parse(typeof(Roshambo),random);
-            // return roshambo;
-            //}
-            //public  Roshambo generateRoshamboPaper()
-            //{
-            //    Roshambo roshambo = (Roshambo)r.Next(1, 2);
-            //    Console.WriteLine(roshambo);
-            //    return roshambo;
-            //}
-            //public Roshambo generateRoshamboScissors()
-            //{
-            //    Roshambo roshambo = (Roshambo)r.Next(1, 3);
-            //    Console.WriteLine(roshambo);
-            //    return roshambo;
-            //}
-        }
+    }
 }

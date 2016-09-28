@@ -9,41 +9,30 @@ namespace Lab_12_RockPaperScissorsGame
     class DynamicPlayer : Player
     {
         Roshambo roshambo;
-        public override Roshambo generateRoshambo()
+        
+
+        public override Roshambo generateRoshambo(int num)
         {
+            
+            switch (num)
+            {
+                case 1:
+                    roshambo = Player.Roshambo.ROCK;
+                    //Console.WriteLine("You chose: " +rps);
+                    break;
+
+                case 2:
+                    roshambo = Player.Roshambo.PAPER;
+                    //Console.WriteLine("You chose: " + rps);
+                    break;
+                case 3:
+                    roshambo = Player.Roshambo.SCISSORS;
+                    //Console.WriteLine("You chose: " + rps);
+                    break;
+                default:
+                    break;
+            }
             return roshambo;
         }
-        public Roshambo generateRoshambo(int randomPlayerChoice)
-            
-        {
-             Roshambo rps = 0;
-           // Console.WriteLine("Enter Rock(1), Paper(2), Scissors(3)");
-           // bool whenValidNumber = int.TryParse(Console.ReadLine(), out randomPlayerChoice);
-
-            if (randomPlayerChoice == 1)
-               {
-                rps = Player.Roshambo.ROCK;
-                Console.WriteLine(rps);
-                return rps;
-
-
-            }
-            if (randomPlayerChoice == 2)
-            {
-                rps = Player.Roshambo.PAPER;
-                Console.WriteLine(rps);
-                return rps;
-            }
-
-            if (randomPlayerChoice == 3)
-            {
-                rps = Player.Roshambo.SCISSORS;
-                Console.WriteLine(rps);
-                return rps;
-            }
-            return rps;
-        }
-
-
     }
 }

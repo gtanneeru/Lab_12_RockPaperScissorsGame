@@ -8,17 +8,16 @@ namespace Lab_12_RockPaperScissorsGame
 {
     class Program
     {
-
         static void Main(string[] args)
         {
             RandomPlayer randomPlayer = new RandomPlayer();
             jack alwaysRock = new jack();
             DynamicPlayer ConsolePlayer = new DynamicPlayer();
 
-
+            int playerCount = 0;
+            int computerCount = 0;
             string name = " ";
             string wantToPlay = "";
-            //int count = 0;
             int playerChoice;
 
 
@@ -29,13 +28,11 @@ namespace Lab_12_RockPaperScissorsGame
             {
                 Console.WriteLine("Would you like to play againest TheJets or TheSharks(j/s)?:");
                 string computerPlayer = Console.ReadLine().ToLower();
-                Console.WriteLine("You chose {0}", computerPlayer);
-                Console.WriteLine("\nEnter Rock(1), Paper (2), Scissors(3)");
-                bool Choice = Int32.TryParse(Console.ReadLine(), out playerChoice);
 
-
-                while (computerPlayer == "j")
+                if (computerPlayer == "j" || computerPlayer == "thejets")
                 {
+                    Console.WriteLine("\nEnter Rock(1), Paper (2), Scissors(3)");
+                    bool Choice = Int32.TryParse(Console.ReadLine(), out playerChoice);
                     if (playerChoice == 1)
                     {
                         Console.WriteLine("{0}:ROCK", name);
@@ -48,6 +45,7 @@ namespace Lab_12_RockPaperScissorsGame
 
                     else if (playerChoice == 2)
                     {
+                        playerCount++;
                         Console.WriteLine("{0}:PAPER", name);
                         Console.WriteLine("TheJets:ROCK");
                         Console.WriteLine("{0} WON", name);
@@ -56,6 +54,7 @@ namespace Lab_12_RockPaperScissorsGame
                     }
                     else if (playerChoice == 3)
                     {
+                        computerCount++;
                         Console.WriteLine("{0}:SCISSORS", name);
                         Console.WriteLine("TheJets:ROCK");
                         Console.WriteLine("TheJets Won");
@@ -67,21 +66,30 @@ namespace Lab_12_RockPaperScissorsGame
                 }
 
 
-              while (computerPlayer == "s")
+                if (computerPlayer == "s" || computerPlayer == "thesharks")
+
                 {
-                    
-                    if (ConsolePlayer.generateRoshambo() != Player.Roshambo.ROCK && ConsolePlayer.generateRoshambo() != Player.Roshambo.PAPER)
+                    int randomPlayerChoice;
+                    Console.WriteLine("Enter Rock(1), Paper(2), Scissors(3)");
+                    bool whenValidNumber = int.TryParse(Console.ReadLine(), out randomPlayerChoice);
+                    Random r = new Random();
+                    int randomNumber = r.Next(1, 4);
+
+                    if (ConsolePlayer.generateRoshambo(randomPlayerChoice) != Player.Roshambo.PAPER && ConsolePlayer.generateRoshambo(randomPlayerChoice) != Player.Roshambo.ROCK)
                     {
                         Console.WriteLine(name + ": SCISSORS");
-                        Console.WriteLine("TheSharks:" + randomPlayer.generateRoshambo());
-                        if (randomPlayer.generateRoshambo() == Player.Roshambo.ROCK)
+                        Console.WriteLine("TheSharks:" + randomPlayer.generateRoshambo(randomNumber));
+
+                        if (randomPlayer.generateRoshambo(randomNumber) == Player.Roshambo.ROCK)
                         {
+                            computerCount++;
                             Console.WriteLine("TheSharks WON");
                             Console.WriteLine("Want to play again! (y/n)");
                             wantToPlay = Console.ReadLine().ToLower();
                         }
-                        else if (randomPlayer.generateRoshambo() == Player.Roshambo.PAPER)
+                        else if (randomPlayer.generateRoshambo(randomNumber) == Player.Roshambo.PAPER)
                         {
+                            playerCount++;
                             Console.WriteLine("{0} WON", name);
                             Console.WriteLine("Want to play again! (y/n)");
                             wantToPlay = Console.ReadLine().ToLower();
@@ -93,19 +101,20 @@ namespace Lab_12_RockPaperScissorsGame
                             wantToPlay = Console.ReadLine().ToLower();
                         }
                     }
-                    else if (ConsolePlayer.generateRoshambo() != Player.Roshambo.PAPER && ConsolePlayer.generateRoshambo() != Player.Roshambo.SCISSORS)
+                    else if (ConsolePlayer.generateRoshambo(randomPlayerChoice) != Player.Roshambo.PAPER && ConsolePlayer.generateRoshambo(randomPlayerChoice) != Player.Roshambo.SCISSORS)
                     {
                         Console.WriteLine(name + ": ROCK");
-                        Console.WriteLine("TheSharks:" + randomPlayer.generateRoshambo());
-                        if (randomPlayer.generateRoshambo() == Player.Roshambo.PAPER)
+                        Console.WriteLine("TheSharks:" + randomPlayer.generateRoshambo(randomNumber));
+                        if (randomPlayer.generateRoshambo(randomNumber) == Player.Roshambo.PAPER)
                         {
+                            computerCount++;
                             Console.WriteLine("TheSharks WON");
                             Console.WriteLine("Want to play again! (y/n)");
                             wantToPlay = Console.ReadLine().ToLower();
                         }
-                        else if (randomPlayer.generateRoshambo() == Player.Roshambo.SCISSORS)
+                        else if (randomPlayer.generateRoshambo(randomNumber) == Player.Roshambo.SCISSORS)
                         {
-
+                            playerCount++;
                             Console.WriteLine("{0} WON", name);
                             Console.WriteLine("Want to play again! (y/n)");
                             wantToPlay = Console.ReadLine().ToLower();
@@ -117,19 +126,21 @@ namespace Lab_12_RockPaperScissorsGame
                             wantToPlay = Console.ReadLine().ToLower();
                         }
 
-                        }
-                    else if (ConsolePlayer.generateRoshambo() != Player.Roshambo.SCISSORS && ConsolePlayer.generateRoshambo() != Player.Roshambo.ROCK)
+                    }
+                    else if (ConsolePlayer.generateRoshambo(randomPlayerChoice) != Player.Roshambo.SCISSORS && ConsolePlayer.generateRoshambo(randomPlayerChoice) != Player.Roshambo.ROCK)
                     {
                         Console.WriteLine(name + ": PAPER");
-                        Console.WriteLine("TheSharks: " + randomPlayer.generateRoshambo());
-                        if (randomPlayer.generateRoshambo() == Player.Roshambo.ROCK)
+                        Console.WriteLine("TheSharks: " + randomPlayer.generateRoshambo(randomNumber));
+                        if (randomPlayer.generateRoshambo(randomNumber) == Player.Roshambo.ROCK)
                         {
+                            playerCount++;
                             Console.WriteLine("{0} WON", name);
                             Console.WriteLine("Want to play again! (y/n)");
                             wantToPlay = Console.ReadLine().ToLower();
                         }
-                        else if (randomPlayer.generateRoshambo() == Player.Roshambo.SCISSORS)
+                        else if (randomPlayer.generateRoshambo(randomNumber) == Player.Roshambo.SCISSORS)
                         {
+                            computerCount++;
                             Console.WriteLine("TheSharks WON");
                             Console.WriteLine("Want to play again! (y/n)");
                             wantToPlay = Console.ReadLine().ToLower();
@@ -140,12 +151,15 @@ namespace Lab_12_RockPaperScissorsGame
                             Console.WriteLine("Want to play again! (y/n)");
                             wantToPlay = Console.ReadLine().ToLower();
                         }
-                      }
-
+                    }
                 }
-                
+
             }
             while (wantToPlay == "y");
+            Console.WriteLine("\n\n Who is The Champian:");
+            Console.WriteLine(name + "'s Won:\t" + playerCount);
+            Console.WriteLine("Computer Won:\t" + computerCount);
+            Console.ReadKey();
         }
     }
 }
